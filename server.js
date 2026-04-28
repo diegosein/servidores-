@@ -1,16 +1,23 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+// inclui o módulo http
+ var http = require('http');
+// inclui o módulo express
+ var express = require('express' ) ;
 
-// Porta definida como 80 conforme o requisito
-const PORT = 80;
+// cria a variável app, pela qual acessaremos
+// os métodos / funções existentes no framework
+// express
+ var app = express () ;
 
-// Configura o Express para servir arquivos estáticos da pasta 'public'
-app.use(express.static(path.join(__dirname, 'public')));
+// método use() utilizado para definir em qual
+// pasta estará o conteúdo estático
+ app.use(express.static('./public'));
+// cria o servidor
+ var server = http.createServer(app);
 
-// Inicia o servidor
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-    console.log(`Acesse localmente em: http://localhost`);
-    console.log(`Acesse na rede pelo seu IP.`);
-});
+// define o número da porta que o servidor ouvirá
+ server.listen(8080);
+
+// mensagem exibida no console para debug
+ console. log("servidor rodando ... ") ;
+
+
